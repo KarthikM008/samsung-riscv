@@ -178,3 +178,37 @@ Instruction: ld ra, 40(sp)
 Type: S-type
 
 Function: Restores the return address from the stack.
+
+
+
+# 10200:
+
+Instruction: ret
+
+Type: Special
+
+Opcode: 1100011
+
+rs2: N/A
+
+rs1: N/A
+
+funct3: 000
+
+Function: Returns from the current subroutine.
+
+
+# 10210:
+
+Instruction: j 101ec <main+0x68>
+
+Type: J-type
+
+rs2: N/A
+
+rs1: N/A
+
+Opcode: 1101111
+
+
+Function: Unconditionally jumps to the address 101ec (which corresponds to the label main+0x68).
