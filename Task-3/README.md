@@ -200,7 +200,7 @@ Function: Returns from the current subroutine.
 
 # 10210:
 
-Instruction: j 101ec <main+0x68>
+Instruction: j   101ec <main+0x68>
 
 Type: J-type
 
