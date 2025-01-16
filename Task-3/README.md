@@ -166,3 +166,15 @@ Instruction: mv a2, a0
 Type: R-type
 
 Function: Prepares for the printf call
+
+
+
+# 101F0:
+
+Machine Code: 02813083
+
+Instruction: ld ra, 40(sp)
+
+Type: S-type
+
+Function: Restores the return address from the stack.
