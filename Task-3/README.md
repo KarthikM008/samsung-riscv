@@ -1,4 +1,4 @@
-# Instruction Types and Fields:-
+# Instruction Types and Fields:- Of factorial of a number
 
 The RISC-V instructions are categorized into types based on their field organization. Each type has specific
 fields like opcode, func3, func7, immediate values, and register numbers. The types include:
