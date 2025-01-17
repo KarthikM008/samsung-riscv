@@ -31,7 +31,7 @@ J-type: Jump type
 
 
 
-
+# compilation of factorial of a number
 
 # 10184:-
 Instruction: addi sp, sp, -48
