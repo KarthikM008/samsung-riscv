@@ -16,6 +16,18 @@ U-type: Upper immediate type
 J-type: Jump type
 
 
+![Screenshot 2025-01-17 142826](https://github.com/user-attachments/assets/2b499556-b303-476c-ad81-11e347525ac8)
+
+
+
+
+
+
+![compilation of factorial of a number using RISC Ofast](https://github.com/user-attachments/assets/645f46f4-e133-47dd-9bfc-09ea1dce50e0)
+
+
+
+
 
 
 
@@ -210,5 +222,16 @@ rs1: N/A
 
 Opcode: 1101111
 
-
 Function: Unconditionally jumps to the address 101ec (which corresponds to the label main+0x68).
+
+
+
+
+
+
+
+
+
+
+![Screenshot 2025-01-17 143206](https://github.com/user-attachments/assets/f8b25954-1e3a-4f50-adb2-cbcd4c19d864)
+
