@@ -63,8 +63,6 @@ SCL: Connect to GPIO pin to PC2
 
 # CODE
 
-
-
 #include <ch32v00x.h>
 
 #include <debug.h>
@@ -87,8 +85,8 @@ SCL: Connect to GPIO pin to PC2
 #define GPIO_Pin_10 (1 << 10)
 
 
-// Function prototypes
 
+// Function prototypes
 void Ultrasonic_Init(void);
 
 uint32_t Measure_Distance();
@@ -98,19 +96,20 @@ void DelayUs(uint32_t us);
 void DelayMs(uint32_t ms);
 
 void Ultrasonic_Init(void) {
-GPIO_InitTypeDef GPIO_InitStruct;
 
-RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    GPIO_InitTypeDef GPIO_InitStruct;
 
- // Configure TRIG pin as Output
- 
- GPIO_InitStruct.GPIO_Pin = TRIG_PIN;
- 
- GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
- 
- GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
- 
- GPIO_Init(GPIOA, &GPIO_InitStruct);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+
+    // Configure TRIG pin as Output
+    
+    GPIO_InitStruct.GPIO_Pin = TRIG_PIN;
+    
+    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP;
+    
+    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+    
+    GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     // Configure ECHO pin as Input
     
@@ -122,22 +121,16 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 }
 
 uint32_t Measure_Distance() {
-
     uint32_t time, distance;
-    
+
     // Send Trigger Pulse
     GPIO_ResetBits(GPIOA, TRIG_PIN);
-    
     DelayUs(2);
-    
     GPIO_SetBits(GPIOA, TRIG_PIN);
-    
     DelayUs(10);
-    
     GPIO_ResetBits(GPIOA, TRIG_PIN);
-    
+
     // Wait for Echo to go HIGH
-    
     while (GPIO_ReadInputDataBit(GPIOA, ECHO_PIN) == 0);
     
     // Measure pulse duration
@@ -161,32 +154,22 @@ void USART1_Init(void) {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_USART1, ENABLE);
 
     // Configure PA9 (TX) as alternate function push-pull
-    
     GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     // Configure PA10 (RX) as input floating
-    
     GPIO_InitStruct.GPIO_Pin = GPIO_Pin_10;
-    
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-    
     GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     USART_InitStruct.USART_BaudRate = 115200;
-    
     USART_InitStruct.USART_WordLength = USART_WordLength_8b;
-    
     USART_InitStruct.USART_StopBits = USART_StopBits_1;
-    
     USART_InitStruct.USART_Parity = USART_Parity_No;
-    
     USART_InitStruct.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-    
     USART_InitStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-    
     USART_Init(USART1, &USART_InitStruct);
     
     USART_Cmd(USART1, ENABLE);
@@ -201,20 +184,15 @@ void USART1_SendString(char *str) {
         while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
     }
 }
-int main(void) {
 
+int main(void) {
     SystemInit();
-    
     Ultrasonic_Init();
-    
     USART1_Init();
-    
     I2C_LCD_Init();
 
     LCD_Clear();
-    
     LCD_SetCursor(0, 0);
-    
     LCD_Print("Ultrasonic Sensor");
 
     while (1) {
@@ -224,26 +202,20 @@ int main(void) {
         sprintf(buffer, "Distance: %d cm", distance);
 
         // Print to LCD
-        
         LCD_Clear();
-        
         LCD_SetCursor(0, 0);
-        
         LCD_Print("Distance:");
-        
         LCD_SetCursor(0, 1);
-        
         LCD_Print(buffer);
 
         // Print to Serial (for debugging)
-        
         USART1_SendString(buffer);
-        
         USART1_SendString("\n");
 
         DelayMs(500);
     }
 }
+
 // Microsecond delay function
 
 void DelayUs(uint32_t us) {
@@ -256,8 +228,9 @@ void DelayUs(uint32_t us) {
 void DelayMs(uint32_t ms) {
 
     for (volatile uint32_t i = 0; i < ms * 10000; i++);
-    
 }
+
+
 // Function Declarations
 
 void lcdInit();
@@ -275,13 +248,3 @@ void lcdCommand(uint8_t cmd);
 void sendI2C(uint8_t data, uint8_t mode);
 
 void writeNibble(uint8_t nibble);
-
-
-
-
-
-
-
-
-
-
