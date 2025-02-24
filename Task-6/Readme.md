@@ -2,10 +2,8 @@
 
 
 
-
-
-# Working Principle of the Object Detection System Using Ultrasonic Sensor with I2C LCD Display
-
+ 
+# Object Detection System Using Ultrasonic Sensor & display it using  I2C LCD Display
 This project utilizes an ultrasonic sensor to detect objects and measures the distance to them. The measured distance is then displayed on an I2C LCD screen.
 
 # 1. Ultrasonic Sensor Operation:
