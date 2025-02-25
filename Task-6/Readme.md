@@ -60,6 +60,7 @@ Distance Sensing: Providing distance measurements for various automation tasks.
 ![WhatsApp Image 2025-02-17 at 9 23 47 PM](https://github.com/user-attachments/assets/4a530f90-c10f-42f6-8ae2-bed88094418b)
 
 
+![Screenshot 2025-02-15 204918](https://github.com/user-attachments/assets/7e33fb01-34bb-482b-9dac-7ec183c20d54)
 
 # VIDEO OF THE PROJECT
 
